@@ -9,6 +9,7 @@ class PSLT_ACF
         add_action('init', [$this, 'register_custom_post_type_taxonomy']);
         add_action('acf/init', [$this, 'register_custom_post_type_settings']);
         add_action('acf/include_fields', [$this, 'register_custom_post_type_settings_field_group']);
+        add_action('acf/init', array($this, 'register_block'));
     }
 
     public function register_custom_post_type()
@@ -63,11 +64,11 @@ class PSLT_ACF
         }
 
         acf_add_local_field_group(array(
-            'key' => 'group_681caf4414545',
+            'key' => 'pslt_location_field_group',
             'title' => 'Custom Fields',
             'fields' => array(
                 array(
-                    'key' => 'field_681caf448ae41',
+                    'key' => 'pslt_location_field_group_name',
                     'label' => 'Name',
                     'name' => 'name',
                     'aria-label' => '',
@@ -88,7 +89,7 @@ class PSLT_ACF
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_681cb1d6f46c5',
+                    'key' => 'pslt_location_field_group_postcode',
                     'label' => 'Postcode',
                     'name' => 'postcode',
                     'aria-label' => '',
@@ -109,7 +110,7 @@ class PSLT_ACF
                     'append' => '',
                 ),
                 array(
-                    'key' => 'field_681cb0adf46c2',
+                    'key' => 'pslt_location_field_group_description',
                     'label' => 'Description',
                     'name' => 'description',
                     'aria-label' => '',
@@ -130,7 +131,7 @@ class PSLT_ACF
                     'delay' => 0,
                 ),
                 array(
-                    'key' => 'field_681cb20bf46c6',
+                    'key' => 'pslt_location_field_group_coordinates',
                     'label' => 'Coordinates',
                     'name' => 'coordinates',
                     'aria-label' => '',
@@ -223,11 +224,11 @@ class PSLT_ACF
         }
 
         acf_add_local_field_group(array(
-            'key' => 'group_681cba2133753',
+            'key' => 'pslt_locations_settings',
             'title' => 'Settings',
             'fields' => array(
                 array(
-                    'key' => 'field_681cba214bcec',
+                    'key' => 'pslt_locations_settings_google_api_key',
                     'label' => 'Google API Key',
                     'name' => 'google_api_key',
                     'aria-label' => '',
@@ -268,6 +269,34 @@ class PSLT_ACF
             'show_in_rest' => 0,
         ));
     }
-}
 
-new PSLT_ACF;
+    public function register_block()
+    {
+        if (!function_exists('acf_register_block_type')) {
+            return;
+        }
+
+        acf_register_block_type(array(
+            'name'              => 'store_locator',
+            'title'             => __('Store Locator', 'pslt'),
+            'description'       => __('A custom block that displays a store locator map.', 'pslt'),
+            'render_template'   => PSLT_DIR . 'templates/blocks/store-locator.php',
+            'category'          => 'formatting',
+            'icon'              => 'location-alt',
+            'keywords'          => array('store', 'locator', 'map', 'location'),
+            'supports'          => array(
+                'align' => true,
+                'mode' => false,
+                'jsx' => true
+            ),
+            'example'  => array(
+                'attributes' => array(
+                    'mode' => 'preview',
+                    'data' => array(
+                        'is_preview' => true
+                    )
+                )
+            )
+        ));
+    }
+}
