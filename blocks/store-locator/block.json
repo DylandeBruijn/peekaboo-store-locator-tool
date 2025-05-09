@@ -1,0 +1,20 @@
+{
+  "name": "acf/store-locator",
+  "title": "Store Locator",
+  "description": "A store locator block with Google Maps integration",
+  "category": "widgets",
+  "icon": "location-alt",
+  "acf": {
+    "mode": "preview",
+    "renderTemplate": "render.php"
+  },
+  "supports": {
+    "anchor": true,
+    "spacing": {
+      "padding": ["top", "bottom"]
+    }
+  },
+  "textdomain": "pslt",
+  "style": "file:./style.css",
+  "viewScript": "file:./view.js"
+}
