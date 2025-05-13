@@ -137,9 +137,14 @@
   white-space: nowrap;
   text-decoration: none;
   font-family: sans-serif;
-  background-color: #2F8F95;
+  background-color: hsl(183, 51%, 38%);
   color: white;
   text-align: center;
+
+  &:hover {
+    color: white;
+    background-color: hsl(183, 51%, 30%);
+  }
 }
 
 .wp-block-acf-store-locator-map {
