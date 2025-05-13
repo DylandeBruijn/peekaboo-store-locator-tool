@@ -127,6 +127,22 @@ function pslt_register_custom_post_type_field_group()
                 'delay' => 0,
             ),
             array(
+                'key' => 'pslt_location_field_group_website',
+                'label' => 'Website',
+                'name' => 'website',
+                'aria-label' => '',
+                'type' => 'link',
+                'instructions' => '',
+                'required' => 0,
+                'conditional_logic' => 0,
+                'wrapper' => array(
+                    'width' => '',
+                    'class' => '',
+                    'id' => '',
+                ),
+                'return_format' => 'array',
+            ),
+            array(
                 'key' => 'pslt_location_field_group_coordinates',
                 'label' => 'Coordinates',
                 'name' => 'coordinates',
