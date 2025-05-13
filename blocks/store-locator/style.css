@@ -98,14 +98,22 @@
 }
 
 .wp-block-acf-store-locator-locations-list-item-title {
-  margin: 0 0 5px 0;
-  font-size: 18px;
+  font-size: 1rem;
+  color: black;
 }
 
 .wp-block-acf-store-locator-locations-list-item-postcode {
-  color: #666;
-  margin: 0 0 10px 0;
+  font-size: 1rem;
+  color: black;
 }
+
+.wp-block-acf-store-locator-locations-list-item-facilities {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
 
 .wp-block-acf-store-locator-locations-list-item-description {
   font-size: 14px;
@@ -141,17 +149,4 @@
 
 .wp-block-acf-store-locator-locations-list::-webkit-scrollbar {
   display: none;
-}
-
-.wp-block-acf-store-locator-locations-list::-webkit-scrollbar-track {
-  background: #f1f1f1;
-}
-
-.wp-block-acf-store-locator-locations-list::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 3px;
-}
-
-.wp-block-acf-store-locator-locations-list::-webkit-scrollbar-thumb:hover {
-  background: #555;
 }
