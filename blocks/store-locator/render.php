@@ -68,6 +68,7 @@ $wrapper_attributes = get_block_wrapper_attributes(
                     <?php foreach ($locations as $location) :
                         $coordinates = get_field('coordinates', $location->ID);
                         $name = get_field('name', $location->ID);
+                        $website = get_field('website', $location->ID);
                         $postcode = get_field('postcode', $location->ID);
                         $description = get_field('description', $location->ID);
                     ?>
@@ -94,9 +95,11 @@ $wrapper_attributes = get_block_wrapper_attributes(
                                     <path d="M3 0C1.34531 0 0 1.34531 0 3V18C0 19.6547 1.34531 21 3 21H18C19.6547 21 21 19.6547 21 18V3C21 1.34531 19.6547 0 18 0H3ZM9 10.5H11.25C12.0797 10.5 12.75 9.82969 12.75 9C12.75 8.17031 12.0797 7.5 11.25 7.5H9V10.5ZM11.25 13.5H9V15C9 15.8297 8.32969 16.5 7.5 16.5C6.67031 16.5 6 15.8297 6 15V6.375C6 5.33906 6.83906 4.5 7.875 4.5H11.25C13.7344 4.5 15.75 6.51562 15.75 9C15.75 11.4844 13.7344 13.5 11.25 13.5Z" fill="black" />
                                 </svg>
                             </ul>
-                            <a href="<?php echo esc_url($location->permalink); ?>" class="wp-block-acf-store-locator-locations-list-item-link">
-                                More details
-                            </a>
+                            <?php if ($website) : ?>
+                                <a href="<?php echo esc_url($website['url']); ?>" class="wp-block-acf-store-locator-locations-list-item-link">
+                                    More details
+                                </a>
+                            <?php endif; ?>
                         </div>
                     <?php endforeach; ?>
                 </div>
