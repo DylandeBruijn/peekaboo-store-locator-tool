@@ -7,9 +7,6 @@ add_action('acf/init', 'pslt_register_custom_post_type_settings');
 add_action('acf/include_fields', 'pslt_register_custom_post_type_settings_field_group');
 add_action('init', 'pslt_register_all_blocks');
 add_action('acf/init', 'pslt_update_google_api_key');
-add_filter('rest_prepare_taxonomy', 'pslt_prepare_facility_taxonomy', 10, 3);
-add_filter('rest_prepare_term', 'pslt_prepare_facility_term', 10, 3);
-add_filter('rest_prepare_location', 'pslt_prepare_location', 10, 3);
 
 function pslt_register_custom_post_type()
 {
@@ -218,15 +215,7 @@ function pslt_register_custom_post_type_taxonomy()
         'public' => true,
         'show_in_menu' => true,
         'show_in_rest' => true,
-        'rest_field_base' => 'facility',
         'hierarchical' => true,
-        'show_in_rest_field' => array(
-            'slug' => true,
-            'name' => false,
-            'id' => false,
-            'link' => false,
-            'taxonomy' => false
-        ),
         'meta_box_cb' => function ($post, $box) {
             $tax_name = esc_attr($box['args']['taxonomy']);
             $terms = get_terms(array(
@@ -268,26 +257,6 @@ function pslt_register_custom_post_type_taxonomy()
             }
         }
     ));
-}
-
-function pslt_prepare_facility_taxonomy($response, $taxonomy, $request) {
-    if ($taxonomy->name === 'facility') {
-        $response->data['rest_base'] = 'facility';
-    }
-    return $response;
-}
-
-function pslt_prepare_facility_term($response, $term, $request) {
-    if ($term->taxonomy === 'facility') {
-        $response->data['slug'] = $term->slug;
-    }
-    return $response;
-}
-
-function pslt_prepare_location($response, $post, $request) {
-    $facilities = wp_get_object_terms($post->ID, 'facility', array('fields' => 'slugs'));
-    $response->data['facility'] = $facilities;
-    return $response;
 }
 
 function pslt_register_custom_post_type_settings()

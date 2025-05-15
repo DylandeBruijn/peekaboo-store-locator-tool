@@ -46,11 +46,24 @@
   font-size: 16px;
 }
 
-.wp-block-acf-store-locator-search-input-icon {
+.wp-block-acf-store-locator-search-icon {
   width: 24px;
   height: 24px;
   flex-shrink: 0;
   cursor: pointer;
+}
+
+.wp-block-acf-store-locator-search-error {
+  color: #e74c3c;
+  margin-top: 8px;
+  font-size: 14px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  padding-inline: 1.5rem;
+}
+
+.wp-block-acf-store-locator-search-error.wp-block-acf-store-locator-search-error-hidden {
+  opacity: 0;
 }
 
 .wp-block-acf-store-locator-filters {
@@ -168,22 +181,6 @@
 @media screen and (min-width: 768px) {
   .wp-block-acf-store-locator {
     padding-block: 8rem;
-  }
-
-  .wp-block-acf-store-locator-card {
-    padding: 2rem;
-  }
-
-  .wp-block-acf-store-locator-search {
-    padding: 1rem 2rem;
-  }
-
-  .wp-block-acf-store-locator-filters {
-    padding: 1rem 2rem;
-  }
-
-  .wp-block-acf-store-locator-location {
-    padding: 1rem 2rem;
   }
 
   .wp-block-acf-store-locator-map {
