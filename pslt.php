@@ -19,5 +19,4 @@ define( 'PSLT_VERSION', '1.0.0' );
 define( 'PSLT_DIR', __DIR__ );
 define( 'PSLT_URL', plugin_dir_url( __FILE__ ) );
 
-require 'includes/utilities.php';
 require 'includes/acf.php';
