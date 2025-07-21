@@ -62,14 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
       lng: parseFloat(locationElement.dataset.lng),
     };
     const title = locationElement.dataset.name;
-    const domParser = new DOMParser();
-    const pinSvgString = `<svg width="40" height="53" viewBox="0 0 40 53" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M40.0007 19.8403C40.0007 30.804 20.0053 53 20.0053 53C20.0053 53 0.00976562 30.804 0.00976562 19.8403C0.00976562 8.87663 8.95583 0 19.9962 0C31.0366 0 39.9917 8.88558 39.9917 19.8403H40.0007Z" fill="#2F8F95" /><path d="M30.5024 18.7565C32.3801 17.1173 32.8947 14.3406 31.5948 12.1102C30.2948 9.87985 27.6137 8.93934 25.2486 9.72758C24.7521 7.29121 22.5945 5.46393 19.9947 5.46393C17.3948 5.46393 15.2373 7.30016 14.7408 9.72758C12.3756 8.93038 9.68547 9.87985 8.39457 12.1102C7.10366 14.3406 7.60919 17.1173 9.48687 18.7565C7.60919 20.3957 7.09464 23.1724 8.39457 25.4027C9.6945 27.6331 12.3756 28.5736 14.7408 27.7854C15.2373 30.2217 17.3948 32.049 19.9947 32.049C22.5945 32.049 24.7521 30.2128 25.2486 27.7854C27.6137 28.5826 30.3038 27.6331 31.5948 25.4027C32.8947 23.1724 32.3801 20.3957 30.5024 18.7565Z" fill="white" /></svg>`;
-    const pinSvgElement = domParser.parseFromString(pinSvgString, "image/svg+xml").documentElement;
+    const pinIcon = document.createElement('img');
+    pinIcon.src = new URL('./icon.png', import.meta.url).href;
+    pinIcon.width = 32;
+    pinIcon.height = 32;
     const marker = new AdvancedMarkerElement({
       map: map,
       position: position,
       title: title,
-      content: pinSvgElement,
+      content: pinIcon,
       gmpClickable: true,
     });
 
